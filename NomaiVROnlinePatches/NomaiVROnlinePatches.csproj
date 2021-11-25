@@ -8,7 +8,7 @@
         <AppDesignerFolder>Properties</AppDesignerFolder>
         <RootNamespace>NomaiVROnlinePatches</RootNamespace>
         <AssemblyName>NomaiVROnlinePatches</AssemblyName>
-        <TargetFramework>net4.6</TargetFramework>
+        <TargetFramework>net4.8</TargetFramework>
         <FileAlignment>512</FileAlignment>
         <Deterministic>true</Deterministic>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -41,9 +41,25 @@
         <None Include="manifest.json">
           <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-    </ItemGroup>    
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="OuterWildsOnline">
+        <HintPath>$(AppData)\OuterWildsModManager\OWML\Mods\Vesper.OuterWildsMMO\OuterWildsOnline.dll</HintPath>
+        <Private>false</Private>
+      </Reference>
+      <Reference Include="SmartFox2X">
+        <HintPath>$(AppData)\OuterWildsModManager\OWML\Mods\Vesper.OuterWildsMMO\SmartFox2X.dll</HintPath>
+        <Private>false</Private>
+      </Reference>
+      <Reference Include="SteamVR">
+        <HintPath>$(AppData)\OuterWildsModManager\OWML\Mods\Raicuparta.NomaiVR\SteamVR.dll</HintPath>
+        <Private>false</Private>
+      </Reference>
+    </ItemGroup>
+    
     <ItemGroup>
       <PackageReference Include="OuterWildsGameLibs" Version="1.1.11.72" />
       <PackageReference Include="OWML" Version="2.1.0" />
+      <PackageReference Include="HarmonyX" Version="2.5.5" />
     </ItemGroup>
 </Project>
