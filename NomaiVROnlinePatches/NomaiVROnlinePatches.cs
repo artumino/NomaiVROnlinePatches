@@ -1,9 +1,9 @@
 ﻿using OWML.ModHelper;
 using OWML.Common;
 
-namespace ModTemplate
+namespace NomaiVROnlinePatches
 {
-    public class ModTemplate : ModBehaviour
+    public class NomaiVROnlinePatches : ModBehaviour
     {
         private void Awake()
         {
@@ -15,7 +15,7 @@ namespace ModTemplate
         private void Start()
         {
             // Starting here, you'll have access to OWML's mod helper.
-            ModHelper.Console.WriteLine($"My mod {nameof(ModTemplate)} is loaded!", MessageType.Success);
+            ModHelper.Console.WriteLine($"My mod {nameof(NomaiVROnlinePatches)} is loaded!", MessageType.Success);
             
             // Example of accessing game code.
             LoadManager.OnCompleteSceneLoad += (scene, loadScene) =>

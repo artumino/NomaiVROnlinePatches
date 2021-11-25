@@ -1,0 +1,9 @@
+{
+  "filename": "NomaiVROnlinePatches.dll",
+  "author": "Artum",
+  "name": "NomaiVR Online Patches",
+  "uniqueName": "Artum.NomaiVROnlinePatches",
+  "version": "0.1.0",
+  "dependencies": ["Raicuparta.NomaiVR", "Vesper.OuterWildsMMO"],
+  "owmlVersion": "2.0.0"
+}
