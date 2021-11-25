@@ -24,10 +24,8 @@ namespace NomaiVROnlinePatches
         public static void ChatHandler_Start(Object __instance)
         {
             chatHandlerInstance = __instance;
-            SteamVR_Events.System(EVREventType.VREvent_KeyboardClosed).RemoveListener(OnSteamVRKeyboaredClosed);
             UpdateOpenChat = AccessTools.MethodDelegate<Action>(AccessTools.DeclaredMethod(chatHandlerType, "UpdateOpenChat"), __instance);
             hiddenInputField = (new UnityEngine.GameObject("VRChatField")).AddComponent<InputField>();
-            SteamVR_Events.System(EVREventType.VREvent_KeyboardClosed).Listen(OnSteamVRKeyboaredClosed);
         }
 
         public static void OnSteamVRKeyboaredClosed(VREvent_t evt)
@@ -45,6 +43,7 @@ namespace NomaiVROnlinePatches
                 hiddenInputField.DeactivateInputField();
                 hiddenInputField.text = "";
             }
+            SteamVR_Events.System(EVREventType.VREvent_KeyboardClosed).RemoveListener(OnSteamVRKeyboaredClosed);
         }
 
         [HarmonyPatch(k_chatHandlerQualifiedTypeName, "Update")]
@@ -60,6 +59,7 @@ namespace NomaiVROnlinePatches
 
                 if(OWInput.IsNewlyPressed(InputLibrary.interact))
                 {
+                    SteamVR_Events.System(EVREventType.VREvent_KeyboardClosed).Listen(OnSteamVRKeyboaredClosed);
                     hiddenInputField.ActivateInputField();
                 }
             }
