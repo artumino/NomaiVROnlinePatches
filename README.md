@@ -5,5 +5,5 @@ This is a bridge mod to fix up some things that break when using NomaiVR togethe
 ### Features
 
 - Chat support
-  - Enable by pressing `Secondary Use (Grip)` + `Interact`
-  - Switch channel by pressi `Secondary Use (Grip)` + `Roll`
+  - Write by pressing `Secondary Use (Grip)` + `Interact`
+  - Switch channel by pressing `Secondary Use (Grip)` + `Roll`
