@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using System.Text;
 using HarmonyLib;
-using ModTemplate;
+using OuterWildsOnline;
 using Sfs2X;
 using UnityEngine.UI;
 using Valve.VR;
@@ -11,9 +11,10 @@ namespace NomaiVROnlinePatches
 {
     public class ChatPatches
     {
-        private const string k_chatHandlerQualifiedTypeName = "ModTemplate.ChatHandler, OuterWildsOnline";
+        private const string k_chatHandlerQualifiedTypeName = "OuterWildsOnline.ChatHandler, OuterWildsMMO";
         private static SmartFox sfs { get => ConnectionController.Connection; }
         private static Action UpdateOpenChat = null;
+        private static ScreenPrompt enterChatPrompt;
         private static Type chatHandlerType = AccessTools.TypeByName(k_chatHandlerQualifiedTypeName);
         private static FieldInfo chatHandlerInputText = AccessTools.Field(chatHandlerType, "inputFieldText");
         private static InputField hiddenInputField;
@@ -26,6 +27,10 @@ namespace NomaiVROnlinePatches
             chatHandlerInstance = __instance;
             UpdateOpenChat = AccessTools.MethodDelegate<Action>(AccessTools.DeclaredMethod(chatHandlerType, "UpdateOpenChat"), __instance);
             hiddenInputField = (new UnityEngine.GameObject("VRChatField")).AddComponent<InputField>();
+
+            enterChatPrompt = new ScreenPrompt(InputLibrary.toolActionSecondary, InputLibrary.interact, "<CMD1>+<CMD2> Start chatting", ScreenPrompt.MultiCommandType.CUSTOM_BOTH);
+            Locator.GetPromptManager().RemoveScreenPrompt((ScreenPrompt)AccessTools.Field(chatHandlerType, "enterChatPrompt").GetValue(__instance));
+            AccessTools.Field(chatHandlerType, "enterChatPrompt").SetValue(__instance, enterChatPrompt);
         }
 
         public static void OnSteamVRKeyboaredClosed(VREvent_t evt)
@@ -52,12 +57,12 @@ namespace NomaiVROnlinePatches
         {
             if(OWInput.IsPressed(InputLibrary.toolActionSecondary))
             {
-                if(OWInput.IsNewlyPressed(InputLibrary.rollMode))
+                if(OWInput.IsNewlyPressed(InputLibrary.rollMode) && !IsChatNA(__instance))
                 {
                     UpdateOpenChat();
                 }
 
-                if(OWInput.IsNewlyPressed(InputLibrary.interact))
+                if(OWInput.IsNewlyPressed(InputLibrary.interact) && !IsChatNA(__instance))
                 {
                     SteamVR_Events.System(EVREventType.VREvent_KeyboardClosed).Listen(OnSteamVRKeyboaredClosed);
                     hiddenInputField.ActivateInputField();
@@ -65,5 +70,8 @@ namespace NomaiVROnlinePatches
             }
             return false;
         }
+
+        //Until ChatHandler isn't public this is the only way to access the enum
+        private static bool IsChatNA(Object chatHandler) => (int)AccessTools.Field(chatHandlerType, "chatMode").GetValue(chatHandlerInstance) == 0;
     }
 }

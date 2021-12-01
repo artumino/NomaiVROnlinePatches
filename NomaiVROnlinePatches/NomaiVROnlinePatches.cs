@@ -10,7 +10,7 @@ namespace NomaiVROnlinePatches
             = new Dictionary<string, string>
         {
             { "Raicuparta.NomaiVR", "2.4.2" },
-            { "Vesper.OuterWildsMMO", "0.3.3" }
+            { "Vesper.OuterWildsMMO", "0.3.5" }
         };
 
         private void Start()

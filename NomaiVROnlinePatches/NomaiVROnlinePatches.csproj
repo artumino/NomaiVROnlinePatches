@@ -44,7 +44,7 @@
     </ItemGroup>
     <ItemGroup>
       <Reference Include="OuterWildsOnline">
-        <HintPath>$(AppData)\OuterWildsModManager\OWML\Mods\Vesper.OuterWildsMMO\OuterWildsOnline.dll</HintPath>
+        <HintPath>$(AppData)\OuterWildsModManager\OWML\Mods\Vesper.OuterWildsMMO\OuterWildsMMO.dll</HintPath>
         <Private>false</Private>
       </Reference>
       <Reference Include="SmartFox2X">
