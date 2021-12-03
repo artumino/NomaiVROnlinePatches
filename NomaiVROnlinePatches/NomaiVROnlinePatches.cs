@@ -9,7 +9,7 @@ namespace NomaiVROnlinePatches
         private static readonly Dictionary<string, string> VersionCheck
             = new Dictionary<string, string>
         {
-            { "Raicuparta.NomaiVR", "2.4.2" },
+            { "Raicuparta.NomaiVR", "2.5" },
             { "Vesper.OuterWildsMMO", "0.3.5" }
         };
 
@@ -30,10 +30,12 @@ namespace NomaiVROnlinePatches
             foreach(var dependency in GetDependencies())
             {
                 var manifest = dependency.ModHelper.Manifest;
-                if(VersionCheck[manifest.UniqueName] != manifest.Version)
+                var installedVersion = manifest.Version;
+                var requiredVersion = VersionCheck[manifest.UniqueName];
+                if(!installedVersion.StartsWith(requiredVersion))
                 {
                     versionCheck = false;
-                    UnityEngine.Debug.LogError($"[NomaiVROnlinePatches] {manifest.UniqueName} expected {VersionCheck[manifest.UniqueName]} got {manifest.Version}");
+                    UnityEngine.Debug.LogError($"[NomaiVROnlinePatches] {manifest.UniqueName} expected {requiredVersion} got {installedVersion}");
                 }
             }
             return versionCheck;
