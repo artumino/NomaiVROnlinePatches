@@ -9,7 +9,7 @@ namespace NomaiVROnlinePatches
         private static readonly Dictionary<string, string> VersionCheck
             = new Dictionary<string, string>
         {
-            { "Raicuparta.NomaiVR", "2.5" },
+            { "Raicuparta.NomaiVR", "2.6" },
             { "Vesper.OuterWildsMMO", "0.3.6" }
         };
 
