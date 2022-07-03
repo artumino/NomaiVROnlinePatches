@@ -3,7 +3,7 @@
   "author": "Artum",
   "name": "NomaiVR Online Patches",
   "uniqueName": "Artum.NomaiVROnlinePatches",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "dependencies": ["Raicuparta.NomaiVR", "Vesper.OuterWildsMMO"],
   "owmlVersion": "2.3.0"
 }
