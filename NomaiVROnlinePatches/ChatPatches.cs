@@ -56,7 +56,7 @@ namespace NomaiVROnlinePatches
         [HarmonyPrefix]
         public static bool ChatHandler_Update(Object __instance)
         {
-            if(OWInput.IsPressed(InputLibrary.toolActionSecondary))
+            /*if(OWInput.IsPressed(InputLibrary.toolActionSecondary))
             {
                 if(OWInput.IsNewlyPressed(InputLibrary.rollMode) && !IsChatNA(__instance))
                 {
@@ -68,7 +68,7 @@ namespace NomaiVROnlinePatches
                     SteamVR_Events.System(EVREventType.VREvent_KeyboardClosed).Listen(OnSteamVRKeyboaredClosed);
                     hiddenInputField.ActivateInputField();
                 }
-            }
+            }*/
             return false;
         }
 
