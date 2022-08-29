@@ -56,7 +56,10 @@ namespace NomaiVROnlinePatches
         [HarmonyPrefix]
         public static bool ChatHandler_Update(Object __instance)
         {
-            /*if(OWInput.IsPressed(InputLibrary.toolActionSecondary))
+            /* TODO this broke in a recent OWO update,
+             so we're completely disabling chat for now until we fix everything.
+            
+            if(OWInput.IsPressed(InputLibrary.toolActionSecondary))
             {
                 if(OWInput.IsNewlyPressed(InputLibrary.rollMode) && !IsChatNA(__instance))
                 {
