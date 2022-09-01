@@ -22,6 +22,7 @@ namespace NomaiVROnlinePatches
             }
 
             Harmony.CreateAndPatchAll(typeof(ChatPatches));
+            Harmony.CreateAndPatchAll(typeof(MessagePatches));
         }
 
         private bool CheckVersion()
