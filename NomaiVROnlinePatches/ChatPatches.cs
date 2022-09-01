@@ -28,10 +28,11 @@ namespace NomaiVROnlinePatches
             UpdateOpenChat = AccessTools.MethodDelegate<Action>(AccessTools.DeclaredMethod(chatHandlerType, "UpdateOpenChat"), __instance);
             hiddenInputField = (new UnityEngine.GameObject("VRChatField")).AddComponent<InputField>();
 
+            
             enterChatPrompt = new ScreenPrompt(InputLibrary.toolActionSecondary, InputLibrary.interact, "<CMD1>+<CMD2> Start chatting", ScreenPrompt.MultiCommandType.CUSTOM_BOTH);
             Locator.GetPromptManager().RemoveScreenPrompt((ScreenPrompt)AccessTools.Field(chatHandlerType, "enterChatPrompt").GetValue(__instance));
             AccessTools.Field(chatHandlerType, "enterChatPrompt").SetValue(__instance, enterChatPrompt);
-            Locator.GetPromptManager().AddScreenPrompt(enterChatPrompt, PromptPosition.UpperRight, true);
+            //Locator.GetPromptManager().AddScreenPrompt(enterChatPrompt, PromptPosition.UpperRight, true);
         }
 
         public static void OnSteamVRKeyboaredClosed(VREvent_t evt)
