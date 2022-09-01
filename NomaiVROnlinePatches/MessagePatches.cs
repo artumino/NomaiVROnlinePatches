@@ -10,7 +10,7 @@ namespace NomaiVROnlinePatches
         //disables ability to equip recording tool
         [HarmonyPatch(k_MessageHandlerQualifiedTypeName, "StartPlacing")]
         [HarmonyPrefix]
-        public static bool RecordingTool_StartPlacing(Object __instance)
+        public static bool MessageHandler_StartPlacing(Object __instance)
         {
             return false;
         }
@@ -18,7 +18,7 @@ namespace NomaiVROnlinePatches
         //disables button prompt
         [HarmonyPatch(k_MessageHandlerQualifiedTypeName, "OnSuitUp")]
         [HarmonyPrefix]
-        public static bool RecordingTool_OnSuitUp(Object __instance)
+        public static bool MessageHandler_OnSuitUp(Object __instance)
         {
             return false;
         }
